@@ -20,3 +20,22 @@ app = FastAPI(title="🛒Estoque de Produtos")
 def home(): 
     return {"mensagem": "Bem-vindo ao Estoque de Produtos"}
 
+@app.post("/produtos")
+def inserindo_produtos(nome: str, categoria: str, preco: float, quantidade: int):
+    adicionar_produtos(nome, categoria, preco, quantidade)
+    return {"mensagem": "Produto adicionado com sucesso!"}
+
+@app.get("/produtos")
+def exibir_produtos():
+    produtos = listar_produtos()
+    lista = []
+    for linha in produtos:
+        lista.append({
+                "id": linha[0], 
+                "nome": linha[1],
+                "categoria": linha[2],
+                "preco": linha[3],
+                "quantidade": linha[4]
+                })
+    return {"Produto": lista}
+
