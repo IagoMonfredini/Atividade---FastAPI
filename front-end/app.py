@@ -33,3 +33,18 @@ elif menu == "Registrar produto":
         else:
             st.error("Erro ao adicionar produto")
 
+elif menu == "Atualizar produto":
+    st.subheader("Atualizar produto")
+    id_produto = st.number_input("ID do produto que deseja atualizar", min_value=1, step=1)
+    novo_nome = st.text_input("Nome")
+    nova_categoria = st.text_input("Categoria")
+    novo_preco = st.number_input("Preço", min_value=1.0, step=0.1)
+    nova_quantidade = st.number_input("Quantidade", min_value=1, step=1)
+    if st.button("Atualizar produto"):
+        dados = {"id_produto": id_produto, "novo_nome": novo_nome, "nova_categoria": nova_categoria, "novo_preco": novo_preco, "nova_quantidade": nova_quantidade}
+        response = requests.put(f"{API_URL}/produtos/{id_produto}", params=dados)
+        if response.status_code == 200:
+            st.success("Produto atualizado com sucesso!")
+        else:
+            st.error("Erro ao atualizar produto")
+
