@@ -64,3 +64,30 @@ def atualizar_produtos(id_produtos, novo_preco, novo_quantidade):
             cursor.close()
             conexao.close()
 
+def buscar_produtos(id_produto):
+    conexao, cursor = conectar()
+    if conexao:
+        try:
+            cursor.execute(
+                "SELECT * FROM produtos WHERE id = %s", (id_produto,)
+            )
+            return cursor.fetchone()
+        except Exception as erro:
+            print(f"Erro ao tentar buscar produto: {erro}")
+        finally:
+            cursor.close()
+            conexao.close()
+
+def deletar_produto(id_produto):
+    conexao = conectar()
+    if conexao:
+        cursor = conexao.cursor()
+        try:
+            cursor.execute("DELETE FROM produtos WHERE id = %s", (id_produto,))
+            conexao.commit()
+            print("Produto deletado com sucesso!")
+        except Exception as erro:
+            print(f"Erro ao deletar produto: {erro}")
+        finally:
+            cursor.close()
+            conexao.close()
