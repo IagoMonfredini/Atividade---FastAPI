@@ -35,3 +35,32 @@ def adicionar_produtos(nome, categoria, preco, quantidade):
             cursor.close()
             conexao.close()
 
+def listar_produtos():
+    conexao, cursor = conectar()
+    if conexao:
+        try:
+            cursor.execute(
+                "SELECT * FROM produtos ORDER BY id"
+            )
+            return cursor.fetchall()
+        except Exception as erro:
+            print(f"Erro ao listar produtos: {erro}")
+        finally:
+            cursor.close()
+            conexao.close()
+
+def atualizar_produtos(id_produtos, novo_preco, novo_quantidade):
+    conexao, cursor = conectar()
+    if conexao:
+        try:
+            cursor.execute(
+           "UPDATE produtos SET preco = %s, quantidade = %s WHERE id = %s",
+                (novo_preco, novo_quantidade, id_produtos) 
+            )
+            conexao.commit()
+        except Exception as erro:
+            print(f"Erro ao atualizar produto: {erro}")
+        finally:
+            cursor.close()
+            conexao.close()
+
