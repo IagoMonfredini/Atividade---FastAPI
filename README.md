@@ -43,4 +43,4 @@ Uvicorn — Servidor ASGI para rodar o FastAPI
 git clone https://github.com/seu-usuario/estoque-fastapi.git
 cd estoque-fastapi
 
-Iago Monfredini - Coryright
+Projeto de foco educacional de Iago Monfredini - Coryright
