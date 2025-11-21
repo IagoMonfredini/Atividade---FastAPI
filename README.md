@@ -18,8 +18,6 @@ O objetivo é fornecer uma API moderna e eficiente para **gerenciar produtos em 
 ---
 
 ## 🧩 Estrutura do Projeto
-
-```bash
 .
 ├── api.py           # Arquivo principal da API (endpoints e rotas)
 ├── conexao.py       # Responsável pela conexão com o PostgreSQL
@@ -43,4 +41,8 @@ Uvicorn — Servidor ASGI para rodar o FastAPI
 git clone https://github.com/seu-usuario/estoque-fastapi.git
 cd estoque-fastapi
 
-Projeto de foco educacional de Iago Monfredini - Coryright
+🧾 Licença
+Este projeto é de uso livre para fins educacionais e demonstração.
+Sinta-se à vontade para modificar e aprimorar conforme suas necessidades.
+
+Iago Monfredini - Coryright
